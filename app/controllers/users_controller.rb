@@ -5,12 +5,18 @@ class UsersController < ApiController
   def index
     @users = User.all
 
+    puts 'PRINTINGGGGGGGG SESSIONS'
+    p session
+    p current_user
+    p user_session
+
     render json: @users
   end
 
   # GET /users/1
   def show
-    render json: @user.to_json(:include => [:owned_groups, :memberships] )
+    render_jsonapi_response(@user)
+    # render json: @user
   end
 
   # # POST /users

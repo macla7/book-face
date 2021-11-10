@@ -1,24 +1,18 @@
-# README
+<h2>Setup activeadmin and create react app</h2>
+<ul>
+  <li>using <a href='https://blog.heroku.com/a-rock-solid-modern-web-stack'>this</a>rails + react guide.</li>
+</ul>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h2>Trying to get Devise working on API</h2>
+<ul>
+  <li>Tried following <a href='https://jameschambers.co.uk/rails-api'>this</a> guide mainly, <a href='https://medium.com/ruby-daily/a-devise-jwt-tutorial-for-authenticating-users-in-ruby-on-rails-ca214898318e'>this one</a> also seemed helpful albeit simipler and I didn't use as much.</li>
+  <li>Had to set secret token env variables, used <a href='https://blog.devgenius.io/what-are-environment-variables-in-rails-6f7e97a0b164'>this</a>.</li>
+  <li>Needed to also set the default_url_options as according to <a href='https://stackoverflow.com/questions/7219732/rails-missing-host-to-link-to-please-provide-host-parameter-or-set-default-ur'>this SO post</a>.</li>
+  <li>question now is.. how do these jwt tokens work and will it work with omniauth
 
-Things you may want to cover:
+</ul>
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<h2>Unanswered general issues</h2>
+<ul>
+  <li>question now is.. how do these jwt tokens work and will it work with omniauth...?</li>
+</ul>
