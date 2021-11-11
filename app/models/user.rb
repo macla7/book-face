@@ -14,4 +14,5 @@ class User < ApplicationRecord
   # think the below was somehow keeping my users logged in,
   # negating my jwt workings..
   self.skip_session_storage = [:http_auth, :params_auth]
+
 end

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 
 function UsersList(props) {
   const [usersList, setUsersList] = useState([]);
@@ -36,7 +37,7 @@ function UsersList(props) {
     window
       .fetch("/api/users", {
         headers: {
-          Authorization: cookie,
+          Authorization: Cookies.get("authorization"),
         },
       })
       .then((response) => response.json())
@@ -64,11 +65,12 @@ function UsersList(props) {
     window
       .fetch("/api/users/1", {
         headers: {
-          Authorization: cookie,
+          Authorization: Cookies.get("authorization"),
         },
       })
       .then((response) => response.json())
       .then((json) => {
+        console.log(document.cookie);
         console.log(json);
         return json;
       })
@@ -80,15 +82,13 @@ function UsersList(props) {
       .fetch("/api/logout", {
         method: "DELETE",
         headers: {
-          Authorization: cookie,
+          Authorization: Cookies.get("authorization"),
         },
       })
       .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        return json;
-      })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log("is this my catch?", error));
+
+    Cookies.remove("authorization");
   }
 
   function login() {
@@ -112,6 +112,7 @@ function UsersList(props) {
           console.log(pair[0] + ": " + pair[1]);
           if (pair[0] === "authorization") {
             setCookie(pair[1]);
+            Cookies.set("authorization", pair[1]);
           }
         }
         return response.json();

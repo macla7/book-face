@@ -14,6 +14,7 @@ module Respondable
       p error.message
       render jsonapi_errors: resource.errors, status: 400
     else
+      puts 'where\'s this at boi'
       render jsonapi: resource
     end
   end

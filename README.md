@@ -15,4 +15,5 @@
 <h2>Unanswered general issues</h2>
 <ul>
   <li>question now is.. how do these jwt tokens work and will it work with omniauth...?</li>
+  <li>At the moment I am storing my tokens in regular JS cookies... feel like this could be unsafe..? Revisit this</li>
 </ul>
