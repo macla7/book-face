@@ -9,6 +9,7 @@
   <li>Had to set secret token env variables, used <a href='https://blog.devgenius.io/what-are-environment-variables-in-rails-6f7e97a0b164'>this</a>.</li>
   <li>Needed to also set the default_url_options as according to <a href='https://stackoverflow.com/questions/7219732/rails-missing-host-to-link-to-please-provide-host-parameter-or-set-default-ur'>this SO post</a>.</li>
   <li>question now is.. how do these jwt tokens work and will it work with omniauth
+  <li>Had to skip_session_storage on the user following the 3 option half way down the docs for <a href='https://github.com/waiting-for-dev/devise-jwt'>devise:jwt</a>.</li>
 
 </ul>
 
