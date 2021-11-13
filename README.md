@@ -3,6 +3,12 @@
   <li>using <a href='https://blog.heroku.com/a-rock-solid-modern-web-stack'>this</a>rails + react guide.</li>
 </ul>
 
+<h2>Set up groups roughly following</h2>
+<ul>
+  <li>This <a href='https://coderedirect.com/questions/272589/many-to-many-users-and-groups-but-groups-have-owners'>coderdirect post</a>.</li>
+  <li>As well as this <a href='https://stackoverflow.com/questions/37972980/best-approach-for-assigning-user-roles-for-different-groups-in-rails-5'>SO post</a>.</li>
+</ul>
+
 <h2>Trying to get Devise working on API</h2>
 <ul>
   <li>Tried following <a href='https://jameschambers.co.uk/rails-api'>this</a> guide mainly, <a href='https://medium.com/ruby-daily/a-devise-jwt-tutorial-for-authenticating-users-in-ruby-on-rails-ca214898318e'>this one</a> also seemed helpful albeit simipler and I didn't use as much.</li>

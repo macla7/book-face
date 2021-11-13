@@ -1,8 +1,9 @@
 import React from "react";
 import UsersList from "./UsersList";
+import GroupFeed from "./GroupFeed";
 import Cookies from "js-cookie";
 
-function Display({ loggedIn }) {
+function Display({ loggedIn, toSignUp, loc }) {
   function deleteToken() {
     window
       .fetch("/api/logout", {
@@ -16,13 +17,25 @@ function Display({ loggedIn }) {
 
     Cookies.remove("authorization");
     loggedIn(false);
+    toSignUp(false);
+  }
+
+  function switcher() {
+    switch (loc) {
+      case "UsersList":
+        return <UsersList />;
+      case "GroupFeed":
+        return <GroupFeed />;
+      default:
+        return <UsersList />;
+    }
   }
 
   return (
     <div>
       <h2>Display Area</h2>
       <button onClick={deleteToken}>Logout</button>
-      <UsersList />
+      {switcher()}
     </div>
   );
 }

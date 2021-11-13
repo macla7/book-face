@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Cookies from "js-cookie";
 
 function Login({ toSignUp, loggedIn }) {
@@ -37,6 +37,12 @@ function Login({ toSignUp, loggedIn }) {
       })
       .catch((error) => console.log(error));
   }
+
+  useEffect(() => {
+    if (Cookies.get("authorization")) {
+      loggedIn(true);
+    }
+  }, []);
 
   function goToSignUp() {
     toSignUp(true);
