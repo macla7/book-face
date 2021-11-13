@@ -15,8 +15,8 @@ class UsersController < ApiController
 
   # GET /users/1
   def show
-    render_jsonapi_response(@user)
-    # render json: @user
+    # render_jsonapi_response(@user)
+    render json: @user.to_json(include: [:groups, :owned_groups])
   end
 
   # # POST /users

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   
   scope '/api' do
     resources :users
+    resources :groups
   end
+
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: %w[show]

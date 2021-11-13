@@ -1,19 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Nav({ setNav }) {
-  function handleNavClick(e) {
-    setNav(e.target.value);
-  }
-
+function Nav(props) {
   return (
     <nav>
-      <h2>Nav</h2>
-      <button onClick={handleNavClick} value="UsersList">
-        Users
-      </button>
-      <button onClick={handleNavClick} value="GroupFeed">
-        Groups
-      </button>
+      <ul>
+        <li>
+          <Link to="/users">Users</Link>
+        </li>
+        <li>
+          <Link to="/groups">Groups</Link>
+        </li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+      </ul>
     </nav>
   );
 }

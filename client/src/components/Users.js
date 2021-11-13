@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
 function UsersList(props) {
   const [usersList, setUsersList] = useState([]);
-  const [cookie, setCookie] = useState("");
+
+  useEffect(() => {
+    getUsersData();
+  }, []);
 
   function getUsersData() {
     window
@@ -33,27 +36,9 @@ function UsersList(props) {
     });
   }
 
-  function getSpecificUser() {
-    window
-      .fetch("/api/users/1", {
-        headers: {
-          Authorization: Cookies.get("authorization"),
-        },
-      })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(document.cookie);
-        console.log(json);
-        return json;
-      })
-      .catch((error) => console.log(error));
-  }
-
   return (
     <div className="usersList">
-      <button onClick={getUsersData}>Get Data</button>
-      <button onClick={getSpecificUser}>Get Specific User</button>
-      <p>{cookie}</p>
+      <h2>Users</h2>
       <ul>{usersList}</ul>
     </div>
   );

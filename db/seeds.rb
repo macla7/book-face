@@ -9,7 +9,9 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 
 user = User.create(
   first_name: 'Mitch',
-  last_name: 'Clark'
+  last_name: 'Clark',
+  email: 'mitch@bing',
+  password: 'Bing123!'
 )
 
 user.owned_groups.create(name: 'The Bingos')
