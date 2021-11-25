@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+  resources :group_invites
   default_url_options :host => "example.com"
   
   scope '/api' do
-    resources :users
+    resources :users do
+      member do
+        get 'notifications'
+      end
+    end
     resources :groups
+    resources :group_invites
   end
-
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: %w[show]

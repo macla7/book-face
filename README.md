@@ -19,6 +19,12 @@
 
 </ul>
 
+<h2>Currently Working on</h2>
+<uL>
+  <li>Need to be able to stop users form inviting themselves to groups. Preferable by just not showing themselves as an option lol.</li>
+  <li>Need to stop double up group_invites</li>
+</ul>
+
 <h2>Unanswered general issues</h2>
 <ul>
   <li>question now is.. how do these jwt tokens work and will it work with omniauth...?</li>

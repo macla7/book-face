@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
 
 function Groups(props) {
   const [allGroups, setAllGroups] = useState([]);
@@ -49,7 +50,7 @@ function Groups(props) {
     return arr.map((group, i) => {
       return (
         <li className="groupLi" key={group.id}>
-          {group.name}
+          <Link to={`/groups/${group.id}`}>{group.name}</Link>
         </li>
       );
     });

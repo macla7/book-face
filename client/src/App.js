@@ -8,6 +8,8 @@ import Home from "./components/Home";
 import Nav from "./components/Nav";
 import Users from "./components/Users";
 import Groups from "./components/Groups";
+import Group from "./components/Group";
+import Notifications from "./components/Notifications";
 
 function App() {
   const [loggedInVal, setLoggedInVal] = useState(false);
@@ -24,15 +26,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">BookFace</header>
-      <Logout loggedIn={handleLoggedIn} toSignUp={goToSignUp} />
 
       {loggedInVal ? (
         <Router>
+          <Logout loggedIn={handleLoggedIn} toSignUp={goToSignUp} />
+          <Notifications />
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/users" element={<Users />} />
             <Route path="/groups" element={<Groups />} />
+            <Route path="/groups/:id" element={<Group />} />
           </Routes>
         </Router>
       ) : needsSignUp ? (

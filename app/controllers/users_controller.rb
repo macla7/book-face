@@ -1,14 +1,15 @@
 class UsersController < ApiController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :notifications]
 
   # GET /users
   def index
     @users = User.all
 
     puts 'PRINTINGGGGGGGG SESSIONS'
-    p session
-    p current_user
-    p user_session
+    # p session
+    p current_user.id
+    p 'bing'
+    # p user_session
 
     render json: @users
   end
@@ -16,7 +17,20 @@ class UsersController < ApiController
   # GET /users/1
   def show
     # render_jsonapi_response(@user)
+
     render json: @user.to_json(include: [:groups, :owned_groups])
+  end
+
+  def notifications
+    p 'hereeeeeee it starts in notifications'
+    pending_group_invites = @user.pending_group_invites.map { |invite| invite.as_json.merge({:type =>'GroupInvite'})}
+    userNames = User.all.select(:id, :first_name, :last_name)
+    groupNames = Group.all.select(:id, :name)
+    p userNames
+    p pending_group_invites
+    notifications = [pending_group_invites].flatten
+    data = {notifications: notifications, userNames: userNames, groupNames: groupNames}
+    render json: data.to_json
   end
 
   # # POST /users
