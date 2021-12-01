@@ -6,7 +6,7 @@ function UsersList(props) {
   const [usersList, setUsersList] = useState([]);
 
   useEffect(() => {
-    getUsersData();
+    props.getUsers().then((response) => setUsersList(createList(response)));
   }, []);
 
   function sortLis() {
@@ -29,23 +29,9 @@ function UsersList(props) {
     }
   }
 
-  function getUsersData() {
-    window
-      .fetch("/api/users", {
-        headers: {
-          Authorization: Cookies.get("authorization"),
-        },
-      })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        setUsersList(createList(json));
-        return json;
-      })
-      .catch((error) => console.log(error));
-  }
-
   function createList(arr) {
+    console.log(arr);
+    console.log(typeof arr);
     return arr.map((user, i) => {
       let userId = jwt_decode(Cookies.get("authorization")).sub;
       if (user.id !== parseInt(userId)) {
@@ -70,7 +56,6 @@ function UsersList(props) {
 
   return (
     <div>
-      <h2>Group</h2>
       <input
         type="text"
         id="inputUser"

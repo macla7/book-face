@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :update, :destroy]
+  before_action :set_group, only: [:show, :update, :destroy, :members]
 
   # GET /groups
   def index
@@ -11,6 +11,11 @@ class GroupsController < ApplicationController
   # GET /groups/1
   def show
     render json: @group
+  end
+
+  def members
+    puts 'HELLLLLLLLLO'
+    render json: @group.member_users
   end
 
   # POST /groups

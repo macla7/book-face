@@ -21,7 +21,7 @@
 
 <h2>Currently Working on</h2>
 <uL>
-  <li>Need to be able to stop users form inviting themselves to groups. Preferable by just not showing themselves as an option lol.</li>
+  <li></li>
   <li>Need to stop double up group_invites</li>
 </ul>
 

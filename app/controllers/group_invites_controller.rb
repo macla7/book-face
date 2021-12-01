@@ -15,11 +15,29 @@ class GroupInvitesController < ApiController
 
   # POST /group_invites
   def create
-    puts 'Create in group invites BOOOOOI'
+    puts 'START OF GI CREATE'
     puts current_user.id
     p group_invite_params
     p params
-    @group_invite = current_user.send_group_invite(group_invite_params)
+    
+    #test if groupInvite exists already
+    alreadyExists = !GroupInvite.own_group_invite(group_invite_params[:invitee_id]).this_groups_invite(group_invite_params[:group_id]).empty?
+    puts alreadyExists
+
+
+    #Now I need to test if membership exists already
+    alreadyMemember = !Membership.my_memberships(group_invite_params[:invitee_id]).this_groups_memberships(group_invite_params[:group_id]).empty?
+    puts alreadyMemember
+
+    puts 'END OF GI CREATE PREP'
+
+
+    if alreadyExists
+      render json: ['alreaaay exists ahy']
+      return
+    else 
+      @group_invite = current_user.send_group_invite(group_invite_params)
+    end
 
     if @group_invite.save
       render json: @group_invite, status: :created, location: @group_invite
@@ -39,6 +57,8 @@ class GroupInvitesController < ApiController
 
   # DELETE /group_invites/1
   def destroy
+    puts 'IN DESTROY'
+    
     @group_invite.destroy
   end
 

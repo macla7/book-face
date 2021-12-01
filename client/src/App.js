@@ -34,7 +34,7 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/users" element={<Users />} />
+            {/* <Route path="/users" element={<Users />} /> */}
             <Route path="/groups" element={<Groups />} />
             <Route path="/groups/:id" element={<Group />} />
           </Routes>

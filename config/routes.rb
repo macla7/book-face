@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     end
     resources :groups
     resources :group_invites
+    resources :memberships
+
+    # or should I be quierying memberships for this...
+    get '/group/:id/members', to: 'groups#members'
   end
 
   namespace :api, defaults: { format: :json } do

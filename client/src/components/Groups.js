@@ -49,7 +49,7 @@ function Groups(props) {
   function createList(arr) {
     return arr.map((group, i) => {
       return (
-        <li className="groupLi" key={group.id}>
+        <li className="groupLi" key={i}>
           <Link to={`/groups/${group.id}`}>{group.name}</Link>
         </li>
       );

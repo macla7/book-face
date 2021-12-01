@@ -5,9 +5,9 @@ function Nav(props) {
   return (
     <nav>
       <ul>
-        <li>
+        {/* <li>
           <Link to="/users">Users</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/groups">Groups</Link>
         </li>

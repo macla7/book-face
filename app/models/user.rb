@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   has_many :memberships
-  has_many :groups, through: :memberships
+  has_many :groups, through: :memberships, source: :group
   has_many :owned_groups, class_name: 'Group'
   has_many :group_invites
   has_many :sent_groups_invites, -> { where confirmed: false}, class_name: 'GroupInvite', foreign_key: 'user_id'

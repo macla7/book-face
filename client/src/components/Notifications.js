@@ -13,6 +13,7 @@ function Notifications(props) {
   // later on I want to change this to use active channel(?)
   // so as to get updates if new notifications.
   function notifications() {
+    console.log("when is this happening");
     let userId = jwt_decode(Cookies.get("authorization")).sub;
     window
       .fetch(`/api/users/${userId}/notifications`, {
@@ -31,13 +32,14 @@ function Notifications(props) {
       .catch((error) => console.log(error));
   }
 
-  function acceptGroupInvite(groupInvite) {
-    window
+  function createMembership(groupInvite) {
+    return window
       .fetch(`/api/memberships`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: Cookies.get("authorization"),
         },
         body: JSON.stringify({
           membership: {
@@ -52,7 +54,38 @@ function Notifications(props) {
         return response.json();
       })
       .then((json) => console.log(json))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        return error;
+      });
+  }
+
+  function deleteGroupInvite(groupInvite) {
+    return window
+      .fetch(`/api/group_invites/${groupInvite.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: Cookies.get("authorization"),
+        },
+      })
+      .then((response) => {
+        console.log("jsonapi BOI:");
+        return response.json();
+      })
+      .then((json) => console.log(json))
+      .catch((error) => {
+        console.log(error);
+        return error;
+      });
+  }
+
+  // this is making 3 http requests.. inefficient..? hmmm
+  async function acceptGroupInvite(groupInvite) {
+    await createMembership(groupInvite);
+    await deleteGroupInvite(groupInvite);
+    notifications();
   }
 
   function createList(notifs, userNames, groupNames) {
@@ -63,7 +96,7 @@ function Notifications(props) {
             <li key={i}>
               {getUserName(notif.user_id, userNames)} invited you to join '
               {getGroupName(notif.group_id, groupNames)}'{" "}
-              <button>Accept</button>
+              <button onClick={() => acceptGroupInvite(notif)}>Accept</button>
             </li>
           );
         default:
